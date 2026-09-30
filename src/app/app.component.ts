@@ -2,12 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BehaviorSubject, finalize } from 'rxjs';
+import { HomeComponent } from './home.component';
 import { PlanSection, PlanResponse } from './models/readiness.model';
 import { ReadinessService } from './services/readiness.service';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, HomeComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.scss',
 })
