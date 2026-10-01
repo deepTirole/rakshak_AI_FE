@@ -7,12 +7,15 @@ export interface AspirantRequest {
   dailyStudyHours: number;
   targetMonths: number;
   notes?: string;
+  runTime1600m: string;
 }
 
 export type PlanSection = string | string[];
 
 export interface PlanResponse {
-  eligibilityBiometrics: PlanSection;
-  desiNutrition: PlanSection;
-  dualPillarSchedule: PlanSection;
+  eligibilityStatus: PlanSection;
+  ruralDietPlan: PlanSection;
+  weightTarget: PlanSection;
+  weeklyWorkoutRoutine: PlanSection;
+  studySchedule: PlanSection;
 }

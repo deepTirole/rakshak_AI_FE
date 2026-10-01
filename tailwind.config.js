@@ -4,6 +4,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        gunmetal: {
+          950: '#080d12',
+          900: '#0d151c',
+          800: '#17232b',
+          700: '#263640',
+        },
+        'neon-green': '#b6f36b',
+        'desert-sand': '#d8cfb8',
+        'danger-red': '#a94338',
         slate: {
           night: '#0f172a',
           steel: '#1e293b',
@@ -17,6 +26,10 @@ module.exports = {
           400: '#34d399',
           500: '#10b981',
         },
+      },
+      fontFamily: {
+        stencil: ['"Black Ops One"', 'Impact', 'sans-serif'],
+        'mono-tech': ['"Share Tech Mono"', 'monospace'],
       },
     },
   },

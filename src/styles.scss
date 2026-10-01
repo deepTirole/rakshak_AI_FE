@@ -4,7 +4,13 @@
 
 body {
   margin: 0;
-  background-color: #0f172a;
+  min-width: 320px;
+  background-color: #080d12;
+  background-image: linear-gradient(rgba(182, 243, 107, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(182, 243, 107, 0.045) 1px, transparent 1px),
+    radial-gradient(circle at 50% 0%, rgba(38, 54, 64, 0.45), transparent 42rem);
+  background-size: 32px 32px, 32px 32px, 100% 100%;
+  color: #e5e7eb;
 }
 
 html {

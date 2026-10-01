@@ -1,0 +1,34 @@
+<main class="min-h-screen bg-gunmetal-950 text-slate-100">
+  <app-home></app-home>
+
+  <section id="readiness-engine" class="mx-auto flex w-full max-w-6xl scroll-mt-6 flex-col gap-8 px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+    <header class="border-l-4 border-neon-green pl-5">
+      <p class="font-mono-tech text-xs uppercase tracking-[0.3em] text-neon-green">// Readiness engine / Personal intake</p>
+      <h2 class="mt-3 font-stencil text-3xl uppercase tracking-wide text-white sm:text-5xl">Build your mission plan.</h2>
+      <p class="mt-4 max-w-3xl font-mono-tech text-sm leading-7 text-slate-300">Feed the engine your current numbers and constraints. It will return a dual-pillar plan for eligibility, nutrition, and study-fitness scheduling.</p>
+    </header>
+
+    <section class="relative overflow-hidden border border-gunmetal-700 bg-gunmetal-900/95 p-6 shadow-2xl shadow-black/30 sm:p-8">
+      <div class="pointer-events-none absolute right-6 top-5 font-mono-tech text-[10px] uppercase tracking-[0.25em] text-slate-500">Field terminal // 01</div>
+      <form [formGroup]="readinessForm" (ngSubmit)="submitReadinessPlan()" class="grid gap-x-8 gap-y-7 pt-5 md:grid-cols-2">
+        <label class="flex flex-col gap-2 font-mono-tech text-xs uppercase tracking-widest text-neon-green">Exam<input formControlName="exam" class="border-0 border-b border-olive-700 bg-transparent px-0 py-3 font-mono-tech text-base text-white outline-none transition placeholder:text-slate-600 focus:border-neon-green focus:ring-0" /></label>
+        <label class="flex flex-col gap-2 font-mono-tech text-xs uppercase tracking-widest text-neon-green">Age<input type="number" formControlName="age" class="border-0 border-b border-olive-700 bg-transparent px-0 py-3 font-mono-tech text-base text-white outline-none transition focus:border-neon-green focus:ring-0" /></label>
+        <label class="flex flex-col gap-2 font-mono-tech text-xs uppercase tracking-widest text-neon-green">Height (cm)<input type="number" formControlName="heightCm" class="border-0 border-b border-olive-700 bg-transparent px-0 py-3 font-mono-tech text-base text-white outline-none transition focus:border-neon-green focus:ring-0" /></label>
+        <label class="flex flex-col gap-2 font-mono-tech text-xs uppercase tracking-widest text-neon-green">Weight (kg)<input type="number" formControlName="weightKg" class="border-0 border-b border-olive-700 bg-transparent px-0 py-3 font-mono-tech text-base text-white outline-none transition focus:border-neon-green focus:ring-0" /></label>
+        <label class="flex flex-col gap-2 font-mono-tech text-xs uppercase tracking-widest text-neon-green">1.6 KM (min : sec)<input type="text" formControlName="runTime1600m" placeholder="06:30" class="border-0 border-b border-olive-700 bg-transparent px-0 py-3 font-mono-tech text-base text-white outline-none transition placeholder:text-slate-600 focus:border-neon-green focus:ring-0" /></label>
+        <label class="flex flex-col gap-2 font-mono-tech text-xs uppercase tracking-widest text-neon-green">Fitness Level<select formControlName="currentFitnessLevel" class="border-0 border-b border-olive-700 bg-transparent px-0 py-3 font-mono-tech text-base text-white outline-none transition focus:border-neon-green focus:ring-0"><option class="bg-gunmetal-900">Beginner</option><option class="bg-gunmetal-900">Intermediate</option><option class="bg-gunmetal-900">Advanced</option></select></label>
+        <label class="flex flex-col gap-2 font-mono-tech text-xs uppercase tracking-widest text-neon-green">Daily Study Hours<input type="number" formControlName="dailyStudyHours" class="border-0 border-b border-olive-700 bg-transparent px-0 py-3 font-mono-tech text-base text-white outline-none transition focus:border-neon-green focus:ring-0" /></label>
+        <label class="flex flex-col gap-2 font-mono-tech text-xs uppercase tracking-widest text-neon-green">Target Months<input type="number" formControlName="targetMonths" class="border-0 border-b border-olive-700 bg-transparent px-0 py-3 font-mono-tech text-base text-white outline-none transition focus:border-neon-green focus:ring-0" /></label>
+        <label class="flex flex-col gap-2 font-mono-tech text-xs uppercase tracking-widest text-neon-green md:col-span-2">Notes<textarea formControlName="notes" rows="3" class="border-0 border-b border-olive-700 bg-transparent px-0 py-3 font-mono-tech text-base leading-7 text-white outline-none transition placeholder:text-slate-600 focus:border-neon-green focus:ring-0"></textarea></label>
+        <div class="md:col-span-2"><button type="submit" [disabled]="isLoading$ | async" class="border border-olive-700 bg-olive-800 px-6 py-3 font-stencil text-sm uppercase tracking-widest text-neon-green transition hover:border-neon-green hover:bg-neon-green hover:text-gunmetal-950 disabled:cursor-not-allowed disabled:opacity-50">[ INITIATE SEQUENCE ]</button></div>
+      </form>
+
+      @if (error$ | async; as errorMessage) {
+        <p class="mt-6 border-l-4 border-danger-red bg-danger-red/10 px-4 py-3 font-mono-tech text-sm text-red-200">{{ errorMessage }}</p>
+      }
+      @if (isLoading$ | async) {
+        <div class="mt-6 flex items-center gap-3 font-mono-tech text-sm text-neon-green"><span class="inline-block h-4 w-4 animate-spin border-2 border-neon-green border-t-transparent"></span>// Building your operational readiness output...</div>
+      }
+    </section>
+  </section>
+</main>

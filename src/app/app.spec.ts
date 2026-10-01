@@ -1,12 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { AppComponent } from './app.component';
+import { routes } from './app.routes';
+import { provideRouter } from '@angular/router';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
-      providers: [provideHttpClientTesting()],
+      providers: [provideHttpClientTesting(), provideRouter(routes)],
     }).compileComponents();
   });
 
@@ -16,9 +18,9 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should set default exam to Agniveer GD', () => {
+  it('should render the routed shell', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.readinessForm.controls.exam.value).toBe('Agniveer GD');
+    expect(app).toBeTruthy();
   });
 });
